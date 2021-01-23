@@ -111,7 +111,13 @@ function goToTop() {
 */
 
 // Build menu 
-window.onscroll = function () { myFunction() };
+window.onscroll = () => {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky");
+  } else {
+    navbar.classList.remove("sticky");
+  }
+};
 
 // Get the navbar
 var navbar = document.getElementById("header");
@@ -119,13 +125,5 @@ var navbar = document.getElementById("header");
 // Get the offset position of the navbar
 var sticky = header.offsetTop;
 
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}
 // Set sections as active
 checkIfSectionInView();
